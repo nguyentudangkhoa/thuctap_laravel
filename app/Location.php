@@ -1,0 +1,15 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class Location extends Model
+{
+    //
+    public $table="location";
+    public function House(){
+        return $this->hasMany('App\House','id_Location','id');
+    }
+}
