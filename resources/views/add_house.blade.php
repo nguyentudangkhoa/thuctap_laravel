@@ -2,11 +2,11 @@
 @section('content')
 <div class="card card-primary">
     <div class="card-header">
-      <h3 class="card-title">Quick Example</h3>
+      <h3 class="card-title">Add a house</h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="{{route('add-house-now')}}" method="POST">
+    <form action="{{route('add-house-now')}}" method="POST" enctype="multipart/form-data">
         @if (count($errors)>0)
             <div class="alert alert-danger">
                 @foreach ($errors->all() as $err)
@@ -34,6 +34,14 @@
         <div class="form-group">
             <label for="exampleInputPassword1">Address</label>
             <input type="text" class="form-control" name="house_address" id="house_address" placeholder="House Address">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputFile">File input</label>
+            <div class="input-group">
+                <div>
+                    <input type="file" name="image">
+                 </div>
+            </div>
         </div>
         <div class="form-group">
             <label>Location</label>

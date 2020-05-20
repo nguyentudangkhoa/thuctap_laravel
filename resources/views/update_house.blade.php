@@ -2,11 +2,11 @@
 @section('content')
 <div class="card card-primary">
     <div class="card-header">
-      <h3 class="card-title">Quick Example</h3>
+      <h3 class="card-title">Update house</h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form action="{{route('Edit-House',$house->id)}}" method="POST">
+    <form action="{{route('Edit-House',$house->id)}}" method="POST" enctype="multipart/form-data">
         @if (count($errors)>0)
             <div class="alert alert-danger">
                 @foreach ($errors->all() as $err)
@@ -42,6 +42,14 @@
                 <option name="{{$locate->id}}" id="{{$locate->id}}">{{$locate->location_name}}</option>
                 @endforeach
             </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputFile">File input</label>
+            <div class="input-group">
+                <div>
+                    <input type="file" name="image">
+                 </div>
+            </div>
         </div>
       </div>
       <!-- /.card-body -->

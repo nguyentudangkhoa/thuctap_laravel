@@ -34,4 +34,21 @@ Route::get('/add-house','HomeController@HouseAdd')->name('add-house');
 //Add house
 Route::post('/add-house','HomeController@addHouse')->name('add-house-now');
 
-Route::post('/searchList', 'HomeController@fetch')->name('searchList');
+Route::delete('delete/{id_location?}','HomeController@destroyLocation')->name('delete-Location');
+//update locaiton layout
+Route::get('/update-location/{id_location?}','HomeController@updateLocation')->name('update-location');
+
+Route::patch('/MakeUpdateLocation/{id_location?}','HomeController@LocationUpdate')->name('make-update-location');
+
+//add location
+Route::get('/add-location','HomeController@LocationAdd')->name('add-location');
+
+Route::post('/add-location-now','HomeController@AddLocation')->name('add-location-now');
+
+//user update layout
+Route::get('/update-user/{user_id?}','HomeController@UserUpdate')->name('user-update');
+
+Route::patch('/make-update-user/{user_id?}','HomeController@UpdateUser')->name('make-user-update');
+//delete user
+Route::delete('delete-user/{user_id?}','HomeController@DestroyUser')->name('delete-user');
+
