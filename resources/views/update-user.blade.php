@@ -22,7 +22,6 @@
         @if(Session::has('Fail-Update-User'))
                 <div class="alert alert-danger">{{Session::get('Fail-Update-User')}}</div>
         @endif
-        <input type="hidden" name="_token" value={{ csrf_token() }} >
       <div class="card-body">
         <div class="form-group">
           <label for="exampleInputEmail1">User name</label>
@@ -31,6 +30,7 @@
         <div class="form-group">
           <label for="exampleInputPassword1">Email</label>
           <input type="text" class="form-control" name="email" value="{{$user->email}}" id="email" placeholder="email">
+          <div id="validate"></div>
         </div>
       </div>
       <!-- /.card-body -->
@@ -41,5 +41,30 @@
 
     </form>
 </div>
+<script>
+    $(document).ready(function(){
+     $('#email').keyup(function(){
+            var email = $(this).val();
+            if(email != '')
+            {
+             var _token = $('input[name="_token"]').val();
+             $.ajax({
+              url:"{{ route('validate-location') }}",
+              method:"POST",
+              data:{email:email, _token:_token},
+              success:function(data){
+                  setTimeout(function(){
+                    $('#validate').fadeIn();
+                    $('#validate').html(data);
+                  },1000);
+              }
+             });
+            }else{
+                $('#validate').html('<label style="color:red">email cant empty</label>');
+            }
+
+        });
+    });
+</script>
 @endsection
 

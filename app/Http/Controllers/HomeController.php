@@ -114,7 +114,8 @@ class HomeController extends Controller
             "house_name"=>"required",
             "house_type"=>"required",
             "house_details"=>"required",
-            "house_address"=>"required",
+            "house_address"=>"required|max:50",
+            "image"=>"required"
         ]);
         $image = $req->file('image');
         $Location = Location::where('location_name',$req->location_name)->first();
@@ -149,7 +150,8 @@ class HomeController extends Controller
             "house_name"=>"required",
             "house_type"=>"required",
             "house_details"=>"required",
-            "house_address"=>"required",
+            "house_address"=>"required|max:50",
+            "image"=>"required"
         ]);
         $image = $req->file('image');
         $house = new House();

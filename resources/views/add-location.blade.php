@@ -21,11 +21,14 @@
             <div class="alert alert-danger">{{Session::get('Fail-Add-Location')}}</div>
         @endif
         <input type="hidden" name="_token" value={{ csrf_token() }} >
+
       <div class="card-body">
         <div class="form-group">
           <label for="exampleInputEmail1">Location name</label>
           <input type="text" class="form-control" name="location_name" id="location_name" placeholder="Location name">
+          <div id="validate"></div>
         </div>
+
         <div class="form-group">
           <label for="exampleInputPassword1">Parent id</label>
           <input type="text" class="form-control" name="parent_id" id="parent id" placeholder="Parent id">
@@ -38,5 +41,30 @@
       </div>
     </form>
 </div>
+<script>
+    $(document).ready(function(){
+     $('#location_name').keyup(function(){
+            var location_name = $(this).val();
+            if(location_name != '')
+            {
+             var _token = $('input[name="_token"]').val();
+             $.ajax({
+              url:"{{ route('validate-location') }}",
+              method:"POST",
+              data:{location_name:location_name, _token:_token},
+              success:function(data){
+                setTimeout(function(){
+                    $('#validate').fadeIn();
+                    $('#validate').html(data);
+                  },1000);
+              }
+             });
+            }else{
+                $('#validate').html('<label style="color:red"> Location cant empty </label>');
+            }
+
+        });
+    });
+</script>
 @endsection
 

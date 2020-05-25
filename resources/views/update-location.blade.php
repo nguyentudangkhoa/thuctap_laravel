@@ -27,6 +27,7 @@
         <div class="form-group">
           <label for="exampleInputEmail1">Location name</label>
           <input type="text" class="form-control" name="location_name" value="{{$location->location_name}}" id="location_name" placeholder=" Location">
+          <div id="validate"></div>
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Parent ID</label>
@@ -41,5 +42,30 @@
 
     </form>
 </div>
+<script>
+    $(document).ready(function(){
+     $('#location_name').keyup(function(){
+            var location_name = $(this).val();
+            if(location_name != '')
+            {
+             var _token = $('input[name="_token"]').val();
+             $.ajax({
+              url:"{{ route('validate-location') }}",
+              method:"POST",
+              data:{location_name:location_name, _token:_token},
+              success:function(data){
+                  setTimeout(function(){
+                    $('#validate').fadeIn();
+                    $('#validate').html(data);
+                  },1000);
+              }
+             });
+            }else{
+                $('#validate').html('<label style="color:red"> Location cant empty </label>');
+            }
+
+        });
+    });
+</script>
 @endsection
 

@@ -51,4 +51,6 @@ Route::get('/update-user/{user_id?}','HomeController@UserUpdate')->name('user-up
 Route::patch('/make-update-user/{user_id?}','HomeController@UpdateUser')->name('make-user-update');
 //delete user
 Route::delete('delete-user/{user_id?}','HomeController@DestroyUser')->name('delete-user');
+//validate location ajax
+Route::post('/validate-location','ThucTap@LocationVali')->name('validate-location');
 
