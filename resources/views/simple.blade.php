@@ -298,8 +298,8 @@
         "searching": false,
         "ordering": true,
         "info": true,
-        "autoWidth": false,
-        "responsive": false,
+        "autoWidth": true,
+        "responsive": true,
         "paginate":false,
       });
       $("#example3").DataTable({
@@ -307,8 +307,8 @@
         "searching": false,
         "ordering": true,
         "info": true,
-        "autoWidth": false,
-        "responsive": false,
+        "autoWidth": true,
+        "responsive": true,
         "paginate":false,
       });
       $('#example2').DataTable({
@@ -316,8 +316,8 @@
         "searching": false,
         "ordering": true,
         "info": true,
-        "autoWidth": false,
-        "responsive": false,
+        "autoWidth": true,
+        "responsive": true,
         "paginate":false,
       });
     });
